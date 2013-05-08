@@ -19,7 +19,7 @@ import com.pemb.mobilis.lab02.R;
 public class MainActivity extends Activity {
 
 	private LinkedList<String> strings;
-	private ArrayAdapter<String> adapter;
+	private MyAdapter adapter;
 	
     public final static String DETALHE = "com.pemb.mobilis.lab02.DETALHE";
 
@@ -27,18 +27,17 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
 		strings = new LinkedList<String>();
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strings);
+		adapter = new MyAdapter(this, strings);
 		ListView lista = (ListView) findViewById(R.id.listView1);
 		lista.setAdapter(adapter);
 		lista.setClickable(true);
 		lista.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
 				Intent intent = new Intent(parent.getContext(),DetailActivity.class);
-				
-				intent.putExtra(MainActivity.DETALHE, ((TextView) view).getText().toString());
+				intent.putExtra(MainActivity.DETALHE, ((TextView) view.findViewById(R.id.linhaDeTexto)).getText().toString());
 				startActivity(intent);
 			}
 		});
@@ -47,6 +46,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
@@ -59,11 +59,4 @@ public class MainActivity extends Activity {
 		campo.setText("");
 	}
 	
-	public void enviaTexto(View view){
-		//ListView lista =  (ListView) view;
-		//lista.geti
-	}
-	
-	
-
 }
