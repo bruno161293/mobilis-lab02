@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/Button1" >
+        android:layout_below="@+id/editText1" >
 
     </ListView>
 
@@ -33,8 +33,9 @@
         android:id="@+id/Button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText1"
+        android:layout_alignBottom="@+id/editText1"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:minWidth="48dip"
         android:onClick="salvaTexto"
         android:text="@string/mais" />
