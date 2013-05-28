@@ -37,13 +37,24 @@ public class MyAdapter extends BaseAdapter {
 	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder viewHolder;
 		if (convertView == null)
 		{
 			convertView = inflater.inflate(R.layout.line, null);
+			viewHolder = new ViewHolder();
+			viewHolder.texto = (TextView) convertView.findViewById(R.id.linhaDeTexto);
+			convertView.setTag(viewHolder);
 		}
-		TextView texto = (TextView) convertView.findViewById(R.id.linhaDeTexto);
-		texto.setText(strings.get(position));
+		else
+		{
+			viewHolder = (ViewHolder) convertView.getTag();
+		}
+		viewHolder.texto.setText(strings.get(position));
 		return convertView;
+	}
+	
+	static class ViewHolder{
+		TextView texto;
 	}
 
 }
